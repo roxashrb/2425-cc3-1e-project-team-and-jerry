@@ -3,20 +3,21 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         //interface
-        JFrame userWindow = new JFrame("Reserve");
+        JFrame userFrame = new JFrame("Hotel Something");
+        userFrame.setSize(1200, 700);
+        userFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        userFrame.setLayout(null);
+        userFrame.setVisible(true);
+
+        JButton startButton = new JButton("Start");
+        startButton.setBounds(500, 300, 100, 50);
+        userFrame.add(startButton);
+        
         
         JTextField textInput = new JTextField();
         textInput.setBounds(100, 100, 400, 50);
         //userWindow.add(textInput);
-        
-        JButton confirmButton = new JButton("Confirm");
-        confirmButton.setBounds(175, 500, 250, 50);
-        userWindow.add(confirmButton);
-        
-        userWindow.setSize(600, 600);
-        userWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        userWindow.setLayout(null);
-        userWindow.setVisible(true);
+
         
         JLabel label = new JLabel();
         label.setText("aaaaaaaaaaaaaaaaaaaaaaa");
