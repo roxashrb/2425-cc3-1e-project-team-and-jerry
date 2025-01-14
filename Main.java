@@ -27,7 +27,7 @@ public class Main {
         userWindow.show();
 
       
-        //input
+        /*
         Scanner userInput = new Scanner(System.in);
         
         //storage
@@ -46,5 +46,6 @@ public class Main {
         } else {
             System.out.println("result b");
         }
+        */
     }
 }
