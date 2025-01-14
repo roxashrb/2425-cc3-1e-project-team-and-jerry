@@ -12,6 +12,12 @@ public class Main {
         JButton startButton = new JButton("Start");
         startButton.setBounds(500, 300, 100, 50);
         userFrame.add(startButton);
+
+        startButton.addActionListener(new ActionListener() {
+            public void startButtonPressed(ActionEvent e) {
+                System.out.println("Start was pressed");
+            }
+        });
         
         
         JTextField textInput = new JTextField();
