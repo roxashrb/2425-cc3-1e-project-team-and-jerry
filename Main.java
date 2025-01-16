@@ -3,8 +3,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Main extends JFrame {
-    static JButton roomI, roomII, roomIII, roomIV, roomV, roomVI;
-    
     public static void main(String[] args) {
         JFrame frame = new JFrame("Room Reservations");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
