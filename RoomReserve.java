@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class RoomReserve extends JFrame {
+public class RoomReserve {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Room Reservations");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
