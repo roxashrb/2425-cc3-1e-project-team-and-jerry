@@ -28,9 +28,11 @@ public class Main extends JFrame {
                     if (roomStatus[roomNumber].equals("Vacant")) {
                         roomStatus[roomNumber] = "Reserved";
                         clickedRoom.setText("Room " + (roomNumber + 1) + ": " + roomStatus[roomNumber]);
+                        clickedRoom.setBackground(Color.gray);
                     } else {
                         roomStatus[roomNumber] = "Vacant";
                         clickedRoom.setText("Room " + (roomNumber + 1) + ": " + roomStatus[roomNumber]);
+                        clickedRoom.setBackground(Color.white);
                     }
                 }
             });
