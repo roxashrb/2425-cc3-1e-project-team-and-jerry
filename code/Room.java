@@ -1,4 +1,4 @@
 public class Room {
     private int roomNumber;
-    private boolean reserved;
+    private boolean reservedStatus;
 }
