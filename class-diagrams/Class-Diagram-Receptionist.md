@@ -1,11 +1,11 @@
 ```mermaid
 ---
-title: Receptionist
+title: Reception
 ---
 classDiagram
-    Employee --|> Receptionist
-    Receptionist *-- Customer
-    class Receptionist {
+    Employee --|> Reception
+    Reception *-- Customer
+    class Reception {
         -Customer customer
     }
 ```
