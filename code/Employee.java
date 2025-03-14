@@ -1,10 +1,10 @@
-package hotelreservationsystem;
-
 public class Employee {
     private String name;
     private int id;
     private int phoneNumber;
     private String address;
+    private double salary;
+    private boolean currentlyEmployed;
     
     public String getName() {
         return name;
