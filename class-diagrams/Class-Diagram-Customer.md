@@ -3,6 +3,7 @@
 title: Customer
 ---
 classDiagram
+    Customer *-- Room
     class Customer {
         -String name
         -int phoneNumber
