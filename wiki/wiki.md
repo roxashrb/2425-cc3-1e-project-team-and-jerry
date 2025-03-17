@@ -57,11 +57,13 @@ classDiagram
     }
 
     class Room {
-      -int roomNumber
-      -boolean reservedStatus
-      +getRoomNumber()
-      +setRoomNumber()
-      +getReservedStatus()
-      +setReservedStatus()
+        -int roomNumber
+        -boolean reservedStatus
+        -double reservationPrice
+        -String roomType
+        +getRoomNumber()
+        +setRoomNumber()
+        +getReservedStatus()
+        +setReservedStatus()
     }
 ```
