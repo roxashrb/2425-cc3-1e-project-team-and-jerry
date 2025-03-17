@@ -40,4 +40,11 @@ classDiagram
         +set employmentTerminated()
     }
 
+    Employee --|> Manager
+    class Manager {
+        -String employeeUnderReview
+        -String customerComplaint
+    }
+
+
 ```
