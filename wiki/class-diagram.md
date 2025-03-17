@@ -23,8 +23,12 @@ classDiagram
         +setCheckedIn()
     }
 
-    class DataHelper
-    <<interface>> DataHelper
+    class DataHelper {
+        <<interface>>
+        +save()
+        +load()
+        +delete()
+    }
     
 
     class Employee {
