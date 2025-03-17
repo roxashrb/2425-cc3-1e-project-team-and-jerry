@@ -47,4 +47,9 @@ classDiagram
     }
 
 
+    Employee --|> Reception
+    Reception *-- Customer
+    class Reception {
+        
+    }
 ```
