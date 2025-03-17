@@ -52,8 +52,8 @@ classDiagram
 
     Employee --|> Manager
     class Manager {
-        -String employeeUnderReview
         -String customerComplaint
+        +recordComplaint()
     }
 
 
