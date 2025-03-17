@@ -52,4 +52,13 @@ classDiagram
     class Reception {
         
     }
+
+    class Room {
+      -int roomNumber
+      -boolean reservedStatus
+      +getRoomNumber()
+      +setRoomNumber()
+      +getReservedStatus()
+      +setReservedStatus()
+    }
 ```
