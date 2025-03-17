@@ -23,8 +23,9 @@ classDiagram
         +setCheckedIn()
     }
 
-    interface DataHelper {
-    }
+    class DataHelper
+    <<interface>> DataHelper
+    
 
     class Employee {
         -String name
