@@ -23,6 +23,9 @@ classDiagram
         +setCheckedIn()
     }
 
+    class DataHelper {
+    }
+
     class Employee {
         -String name
         -int id
