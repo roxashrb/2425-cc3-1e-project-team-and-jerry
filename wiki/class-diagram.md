@@ -1,4 +1,8 @@
 ```mermaid
+---
+title: Hotel Reservation System
+---
+
 classDiagram
     Customer *-- Room
     class Customer {
