@@ -5,9 +5,6 @@ Title: Hotel Reservation System
 classDiagram
     class Client {
         -String ClientType
-        -int userId
-        -String userName
-        -String userToken
         -boolean loginStatus
     }
 
@@ -30,6 +27,9 @@ classDiagram
     }
 
     class LoginHelper {
+        -int userId
+        -String userName
+        -String userToken
         +login()
         +logout()
     }
