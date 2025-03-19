@@ -9,8 +9,6 @@ classDiagram
         -String userName
         -String userToken
         -boolean loginStatus
-        +logIn()
-        +logOut()
     }
 
     Client --|> Hotel
@@ -29,6 +27,11 @@ classDiagram
         -int roomNumber
         -double roomPrice
         -String roomType
+    }
+
+    class LoginHelper {
+        +login()
+        +logout()
     }
 
     class Main {
