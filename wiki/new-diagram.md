@@ -4,6 +4,7 @@ Title: Hotel Reservation System
 ---
 classDiagram
     class Client {
+        -String ClientType
         -int userId
         -String userName
         -String userToken
@@ -18,9 +19,9 @@ classDiagram
     }
 
     Client <|-- Customer
-    class Customer (
+    class Customer {
         +reserveRequest()
-    )
+    }
 
     Hotel *-- Rooms
     class Rooms {
