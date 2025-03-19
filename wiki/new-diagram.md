@@ -13,17 +13,17 @@ classDiagram
         +logOut()
     }
 
-    Client <|-- Hotel
+    Client --|> Hotel
     class Hotel {
         +reserveRoom()
     }
 
-    Client <|-- Customer
+    Client --|> Customer
     class Customer {
         +reserveRequest()
     }
 
-    Hotel *-- Rooms
+    Hotel --* Rooms
     class Rooms {
         -int roomHotelId
         -int roomNumber
