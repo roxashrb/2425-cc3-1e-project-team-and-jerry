@@ -1,4 +1,3 @@
-public class Manager extends Employee {
-    public void addCustomerComplaint(String complaint) {
-    }
+public class Manager extends Client {
+    
 }
