@@ -1,8 +1,11 @@
 public class Customer {
-    private String name;
     private int phoneNumber;
-    private int bookedRoom;
-    private boolean hasPaid;
-    private boolean checkedIn;
-    
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }
