@@ -1,17 +1,38 @@
 public class Room {
+    private String hotelName;
     private int roomNumber;
-    private boolean reservedStatus;
+    private double roomPrice;
+    private boolean roomIsReserved;
+
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
+    }
 
     public int getRoomNumber() {
+        return roomNumber;
     }
 
     public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
     }
 
-    public boolean getReservedStatus() {
+    public double getRoomPrice() {
+        return roomPrice;
     }
 
-    public void setReservedStatus(boolean reservedStatus) {
-        this.reservedStatus = reservedStatus;
+    public void setRoomPrice() {
+        this.roomPrice = roomPrice;
+    }
+
+    public boolean getRoomIsReserved() {
+        return roomIsReserved;
+    }
+
+    public void setRoomIsReserved(boolean roomIsReserved) {
+        this.roomIsReserved = roomIsReserved;
     }
 }
