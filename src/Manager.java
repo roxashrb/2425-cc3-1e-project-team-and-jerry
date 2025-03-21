@@ -1,3 +1,4 @@
-public class Manager extends Client implements FileHelper {
+import
+public class Manager extends Client {
     public void getReservationRequest
 }
