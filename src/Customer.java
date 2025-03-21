@@ -1,4 +1,4 @@
-public class Customer {
+public class Customer extends Client {
     private int phoneNumber;
 
     public int getPhoneNumber() {
