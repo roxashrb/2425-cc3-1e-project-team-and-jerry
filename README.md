@@ -8,21 +8,18 @@ Sabiano, Jowardson
   
 Hotel Reservation System:  
 A prototype for an app that serves as a middleman between customers and hotel managers for the purpose of room reservations  
-  
-Workflow Reminder:  
-  
-Summary:  
+
+
+-----
+# Workflow Reminder:  
+
+## Summary:  
 git clone  
 git pull  
 git add  
 git commit -m "message"  
 git push  
 
------
-
-# 2425-2nd-cc3-1e-rpg
-
-# Contributing to this repository
 
 ## Cloning the repository
 
