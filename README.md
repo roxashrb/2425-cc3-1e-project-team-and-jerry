@@ -13,14 +13,14 @@ A prototype for an app that serves as a middleman between customers and hotel ma
 -----
 # Workflow Reminder:  
 
-## Summary:  
+## Summary
 git clone  
 git pull  
 git add  
 git commit -m "message"  
 git push  
 
-
+-----
 ## Cloning the repository
 
 You should already have Git installed. Install Git if you haven't already https://git-scm.com/
