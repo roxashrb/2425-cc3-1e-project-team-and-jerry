@@ -11,7 +11,7 @@ A prototype for an app that serves as a middleman between customers and hotel ma
 
 
 -----
-# Workflow Reminder:  
+# Workflow Reminder
 
 ## Summary
 git clone  
