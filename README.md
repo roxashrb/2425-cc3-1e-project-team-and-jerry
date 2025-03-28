@@ -14,7 +14,8 @@ A prototype for an app that serves as a middleman between customers and hotel ma
 # Workflow Reminder
 
 ## Summary
-git clone  
+git clone
+git checkout "branch name"
 git pull  
 git add  
 git commit -m "message"  
