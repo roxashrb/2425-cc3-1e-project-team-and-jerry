@@ -15,7 +15,7 @@ A prototype for an app that serves as a middleman between customers and hotel ma
 
 ## Summary
 git clone  
-git checkout "branch name"
+git checkout "branch name"  
 git pull  
 git add  
 git commit -m "message"  
