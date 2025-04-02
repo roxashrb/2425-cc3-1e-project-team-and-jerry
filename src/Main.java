@@ -33,6 +33,7 @@ public class Main {
                         
                         case 2:
                         System.out.println("Enter new data");
+                        break;
                         
                         case 3:
                         break;
