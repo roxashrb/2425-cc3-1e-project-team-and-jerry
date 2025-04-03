@@ -1,0 +1,35 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+
+public class HomePage{
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("HOTEL RESERVATION SYSTEM");
+        frame.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 100));
+
+       
+        frame.getContentPane().setBackground(Color.YELLOW);
+
+        
+        JLabel label = new JLabel("Welcome to the TEAM AND JERRYS HOTEL", SwingConstants.CENTER);
+        JButton clickMeButton = new JButton("NEXT");
+        label.setFont(new Font("Arial", Font.BOLD, 24));
+       
+       
+        clickMeButton.setFont(new Font("Arial", Font.BOLD, 18));
+        clickMeButton.addActionListener((ActionEvent e) -> {
+            
+            
+            label.setText("You clicked the button!");
+            label.setForeground(Color.YELLOW);  
+        });
+
+      
+        frame.add(label);
+        frame.add(clickMeButton);  
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null); 
+        frame.setVisible(true);
+    }
+}
