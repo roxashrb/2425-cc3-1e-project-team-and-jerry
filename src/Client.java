@@ -1,5 +1,3 @@
-package javaapplication45;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -58,6 +56,4 @@ public class Client {
             System.out.println("An error occurred.");
         }
     }
-    
-    
 }
