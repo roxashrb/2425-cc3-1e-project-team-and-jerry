@@ -13,7 +13,7 @@ public class HomePage{
         
         JLabel label = new JLabel("Welcome to the TEAM AND JERRYS HOTEL", SwingConstants.CENTER);
         JButton clickMeButton = new JButton("NEXT");
-        label.setFont(new Font("Arial", Font.BOLD, 24));
+        label.setFont(new Font("Roman", Font.BOLD, 24));
        
        
         clickMeButton.setFont(new Font("Arial", Font.BOLD, 18));
