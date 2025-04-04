@@ -1,3 +1,81 @@
+/*
+package javaapplication45;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner userInput = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("set client type: \n[1] Manager\n[2] Customer");
+            int clientType = userInput.nextInt();
+            userInput.nextLine();
+        
+            System.out.println("Set client name:");
+            String clientName = userInput.nextLine();
+            
+            if (clientType == 1) {
+                client client = new Manager();
+                client.setClientType("Manager");
+                client.setClientName(clientName);
+            } else if (clientType == 2) {
+                Customer client = new Customer();
+                client.setClientType("Customer");
+                client.setClientName(clientName);
+            }
+        }
+        
+        
+        int clientTask;
+        while (true) {
+            System.out.println("Choose operation:\n1 Read a reservation\n2 Create a reservation\n3 Exit");
+            clientTask = userInput.nextInt();
+            userInput.nextLine();
+            
+            switch (clientTask) {
+                case 1:
+                    System.out.println("Input the name of the reservation to read: ");
+                    String reservationToRead = userInput.nextLine();
+                    client.readReservation(reservationToRead);
+                    System.out.println(managerClient.readReservationResult());
+                            break;
+                        case 2:
+                            System.out.println("Enter new data");
+                            break;
+                        default:
+                            System.out.println("Would you like to exit? y/n");
+                            String exitChoice = userInput.nextLine();
+                            if (exitChoice.equals("y")) {
+                                System.exit(0);
+                            }
+                            break;
+                    }
+                }
+            } else if (clientType == 2) {
+                Customer customerClient = new Customer();
+                customerClient.setClientType("Customer");
+                System.out.println("Set client name:");
+                clientName = userInput.nextLine();
+                customerClient.setClientName(clientName);
+            }
+            
+            /*
+                
+                while (true) {
+                    System.out.println("Choose task:\n1:Create a reservation");
+                    int task = userInput.nextInt();
+                    long timestamp = System.currentTimeMillis();
+                    break;
+                }
+                break;
+            }
+            break;*/
+        }
+    }
+}
+*/
+
 package javaapplication45;
 
 import java.util.Scanner;
