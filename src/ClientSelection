@@ -1,2 +1,45 @@
-public class ClientSelection {
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class ClientSelectionUI {
     public void show() {
+        JFrame clientFrame = new JFrame("Select Client");
+        clientFrame.setSize(400, 300);
+        clientFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        clientFrame.setLayout(new GridLayout(6, 1));
+
+        JLabel label = new JLabel("Select Client Type", SwingConstants.CENTER);
+        JRadioButton managerButton = new JRadioButton("Manager");
+        JRadioButton customerButton = new JRadioButton("Customer");
+        ButtonGroup group = new ButtonGroup();
+        group.add(managerButton);
+        group.add(customerButton);
+
+        JTextField nameField = new JTextField();
+        JButton proceedButton = new JButton("Proceed");
+
+        clientFrame.add(label);
+        clientFrame.add(managerButton);
+        clientFrame.add(customerButton);
+        clientFrame.add(nameField);
+        clientFrame.add(proceedButton);
+
+        proceedButton.addActionListener(e -> {
+            String type = managerButton.isSelected() ? "Manager" : customerButton.isSelected() ? "Customer" : "";
+            String name = nameField.getText().trim();
+
+            if (type.isEmpty() || name.isEmpty()) {
+                JOptionPane.showMessageDialog(clientFrame, "Please fill in all fields.");
+            } else {
+                JOptionPane.showMessageDialog(clientFrame, "Welcome " + type + ": " + name);
+                clientFrame.dispose();
+                new ReservationUI().show();
+            }
+        });
+
+        clientFrame.setVisible(true);
+    }
+}
+
