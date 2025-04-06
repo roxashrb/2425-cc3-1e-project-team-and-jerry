@@ -24,7 +24,7 @@ public class ClientSelectionUI {
         clientFrame.add(managerButton);
         clientFrame.add(customerButton);
         clientFrame.add(proceedButton);
-
+         
         proceedButton.addActionListener(e -> {
             String type = managerButton.isSelected() ? "Manager" : customerButton.isSelected() ? "Customer" : "";
             String name = nameField.getText().trim();
