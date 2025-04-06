@@ -23,7 +23,6 @@ public class ClientSelectionUI {
         clientFrame.add(label);
         clientFrame.add(managerButton);
         clientFrame.add(customerButton);
-        clientFrame.add(nameField);
         clientFrame.add(proceedButton);
 
         proceedButton.addActionListener(e -> {
