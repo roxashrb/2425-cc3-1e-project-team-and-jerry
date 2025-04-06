@@ -1,0 +1,70 @@
+package javaapplication25;
+
+
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Paymentui {
+    public void show(String guestName, String roomNumber, String roomType, String checkIn, String checkOut) {
+        JFrame paymentFrame = new JFrame("Payment Page");
+        paymentFrame.setSize(450, 400);
+        paymentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        paymentFrame.setLayout(new GridLayout(9, 2, 10, 10));
+
+        // Displaying the reservation details (read-only)
+        paymentFrame.add(new JLabel("Guest Name:"));
+        paymentFrame.add(new JLabel(guestName));
+        paymentFrame.add(new JLabel("Room Number:"));
+        paymentFrame.add(new JLabel(roomNumber));
+        paymentFrame.add(new JLabel("Room Type:"));
+        paymentFrame.add(new JLabel(roomType));
+        paymentFrame.add(new JLabel("Check-In Date:"));
+        paymentFrame.add(new JLabel(checkIn));
+        paymentFrame.add(new JLabel("Check-Out Date:"));
+        paymentFrame.add(new JLabel(checkOut));
+
+        // Payment input fields
+        JTextField cardNumberField = new JTextField();
+        JTextField expiryField = new JTextField();
+        JTextField cvvField = new JTextField();
+
+        paymentFrame.add(new JLabel("Card Number:"));
+        paymentFrame.add(cardNumberField);
+        paymentFrame.add(new JLabel("Expiry Date (MM/YY):"));
+        paymentFrame.add(expiryField);
+        paymentFrame.add(new JLabel("CVV:"));
+        paymentFrame.add(cvvField);
+
+        JButton payButton = new JButton("Pay Now");
+        JButton cancelButton = new JButton("Cancel");
+
+        paymentFrame.add(payButton);
+        paymentFrame.add(cancelButton);
+
+        payButton.addActionListener(e -> {
+            String cardNumber = cardNumberField.getText();
+            String expiry = expiryField.getText();
+            String cvv = cvvField.getText();
+
+            if (cardNumber.isEmpty() || expiry.isEmpty() || cvv.isEmpty()) {
+                JOptionPane.showMessageDialog(paymentFrame, "Please fill out all payment fields.");
+            } else {
+                JOptionPane.showMessageDialog(paymentFrame, "Payment Successful! Thank you.");
+                paymentFrame.dispose();
+                // Call the ConfirmationUI after successful payment
+                new ConfirmationUI().show(guestName, roomNumber, roomType, checkIn, checkOut);
+            }
+        });
+
+        cancelButton.addActionListener(e -> {
+            JOptionPane.showMessageDialog(paymentFrame, "Payment canceled.");
+            paymentFrame.dispose();
+        });
+
+        paymentFrame.setVisible(true);
+    }
+}
+
