@@ -41,7 +41,7 @@ public class LoginUI {
             String password = new String(passwordField.getPassword());
             
             
-            if ("admin".equals(username) && "cherry".equals(password)) {
+            if ("admin".equals(username) && "password".equals(password)) {
                 JOptionPane.showMessageDialog(loginFrame, "Login successful!");
                 loginFrame.setVisible(false);  
                 
