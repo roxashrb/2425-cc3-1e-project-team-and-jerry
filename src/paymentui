@@ -7,14 +7,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Paymentui {
+public class PaymentUI {
     public void show(String guestName, String roomNumber, String roomType, String checkIn, String checkOut) {
         JFrame paymentFrame = new JFrame("Payment Page");
         paymentFrame.setSize(450, 400);
         paymentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         paymentFrame.setLayout(new GridLayout(9, 2, 10, 10));
 
-        // Displaying the reservation details (read-only)
+        
         paymentFrame.add(new JLabel("Guest Name:"));
         paymentFrame.add(new JLabel(guestName));
         paymentFrame.add(new JLabel("Room Number:"));
@@ -26,7 +26,7 @@ public class Paymentui {
         paymentFrame.add(new JLabel("Check-Out Date:"));
         paymentFrame.add(new JLabel(checkOut));
 
-        // Payment input fields
+       
         JTextField cardNumberField = new JTextField();
         JTextField expiryField = new JTextField();
         JTextField cvvField = new JTextField();
@@ -35,7 +35,7 @@ public class Paymentui {
         paymentFrame.add(cardNumberField);
         paymentFrame.add(new JLabel("Expiry Date (MM/YY):"));
         paymentFrame.add(expiryField);
-        paymentFrame.add(new JLabel("CVV:"));
+        paymentFrame.add(new JLabel("Verification code:"));
         paymentFrame.add(cvvField);
 
         JButton payButton = new JButton("Pay Now");
