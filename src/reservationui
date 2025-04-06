@@ -1,1 +1,75 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication25;
+
+/**
+ *
+ * @author Tricia Bonilla
+ */
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class ReservationUI {
+    public void show() {
+        JFrame resFrame = new JFrame("Reservation Form");
+        resFrame.setSize(500, 500);
+        resFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        resFrame.setLayout(new GridLayout(9, 2, 10, 10));
+
+        JTextField nameField = new JTextField();
+        JTextField roomNumberField = new JTextField();
+        JTextField roomTypeField = new JTextField();
+        JTextField checkInField = new JTextField();
+        JTextField checkOutField = new JTextField();
+
+        resFrame.add(new JLabel("Guest Name:"));
+        resFrame.add(nameField);
+        resFrame.add(new JLabel("Room Number:"));
+        resFrame.add(roomNumberField);
+        resFrame.add(new JLabel("Room Type:"));
+        resFrame.add(roomTypeField);
+        resFrame.add(new JLabel("Check-In Date:"));
+        resFrame.add(checkInField);
+        resFrame.add(new JLabel("Check-Out Date:"));
+        resFrame.add(checkOutField);
+
+        JButton submitBtn = new JButton("Submit");
+        JButton clearBtn = new JButton("Clear");
+
+        resFrame.add(submitBtn);
+        resFrame.add(clearBtn);
+
+        JTextArea summaryArea = new JTextArea();
+        summaryArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(summaryArea);
+        resFrame.add(new JLabel("Reservation Summary:"));
+        resFrame.add(scrollPane);
+
+        submitBtn.addActionListener(e -> {
+            String summary = "Reservation Successful!\n"
+                    + "Guest: " + nameField.getText() + "\n"
+                    + "Room #: " + roomNumberField.getText() + "\n"
+                    + "Type: " + roomTypeField.getText() + "\n"
+                    + "Check-In: " + checkInField.getText() + "\n"
+                    + "Check-Out: " + checkOutField.getText();
+            summaryArea.setText(summary);
+        });
+
+        clearBtn.addActionListener(e -> {
+            nameField.setText("");
+            roomNumberField.setText("");
+            roomTypeField.setText("");
+            checkInField.setText("");
+            checkOutField.setText("");
+            summaryArea.setText("");
+        });
+
+        resFrame.setVisible(true);
+    }
+}
+
 
