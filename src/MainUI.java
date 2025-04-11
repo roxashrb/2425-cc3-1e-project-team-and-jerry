@@ -24,9 +24,13 @@ public class MainUI {
         frame.setSize(600, 400);
         frame.setLayout(new BorderLayout());
 
-        // Client Info Panel
+    // Set background color for the frame
+        frame.getContentPane().setBackground(Color.YELLOW); // Set background to yellow
+
+    // Client Info Panel
         JPanel clientPanel = new JPanel(new GridLayout(2, 2));
         clientPanel.setBorder(BorderFactory.createTitledBorder("Client Information"));
+        clientPanel.setBackground(Color.YELLOW); // Set background to yellow for panel
 
         clientPanel.add(new JLabel("Client Name:"));
         clientNameField = new JTextField();
@@ -38,35 +42,42 @@ public class MainUI {
 
         frame.add(clientPanel, BorderLayout.NORTH);
 
-        // Action Buttons Panel
+    // Action Buttons Panel
         JPanel actionPanel = new JPanel(new GridLayout(5, 1));
         actionPanel.setBorder(BorderFactory.createTitledBorder("Actions"));
+        actionPanel.setBackground(Color.YELLOW); // Set background to yellow for panel
 
         JButton createButton = new JButton("Create Reservation");
+        styleButton(createButton); // Style the button
         createButton.addActionListener(e -> createReservation());
         actionPanel.add(createButton);
 
         JButton readButton = new JButton("Read Reservation");
+        styleButton(readButton); // Style the button
         readButton.addActionListener(e -> readReservation());
         actionPanel.add(readButton);
 
         JButton updateButton = new JButton("Update Reservation");
+        styleButton(updateButton); // Style the button
         updateButton.addActionListener(e -> updateReservation());
         actionPanel.add(updateButton);
 
         JButton deleteButton = new JButton("Delete Reservation");
+        styleButton(deleteButton); // Style the button
         deleteButton.addActionListener(e -> deleteReservation());
         actionPanel.add(deleteButton);
 
         JButton exitButton = new JButton("Exit");
+        styleButton(exitButton); // Style the button
         exitButton.addActionListener(e -> System.exit(0));
         actionPanel.add(exitButton);
 
         frame.add(actionPanel, BorderLayout.WEST);
 
-        // File Operations Panel
+    // File Operations Panel
         JPanel filePanel = new JPanel(new GridBagLayout());
         filePanel.setBorder(BorderFactory.createTitledBorder("File Operations"));
+        filePanel.setBackground(Color.YELLOW); // Set background to yellow for panel
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5); // Add padding between components
@@ -74,14 +85,14 @@ public class MainUI {
         gbc.gridx = 0;
         gbc.gridy = 0;
 
-        // Add File Name Field
+    // Add File Name Field
         filePanel.add(new JLabel("File Name:"), gbc);
         gbc.gridx = 1;
         gbc.weightx = 1.0; // Make the text field expand horizontally
         fileNameField = new JTextField();
         filePanel.add(fileNameField, gbc);
 
-        // Add File Content Area
+    // Add File Content Area
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.weightx = 0; // Reset weight for label
@@ -99,8 +110,15 @@ public class MainUI {
 
         frame.add(filePanel, BorderLayout.CENTER);
 
-        // Display the frame
+    // Display the frame
         frame.setVisible(true);
+    }
+
+// Utility method to style buttons
+    private void styleButton(JButton button) {
+        button.setBackground(Color.MAGENTA); // Set button color to purple
+        button.setForeground(Color.WHITE);   // Set button text color to white
+        button.setFocusPainted(false);       // Remove focus border
     }
 
     // Actions
