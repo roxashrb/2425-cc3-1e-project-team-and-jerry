@@ -1,190 +1,178 @@
-/*
-package javaapplication45;
+package hotelreservationsystem;
 
 import java.util.Scanner;
+import java.io.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner userInput = new Scanner(System.in);
-
-        while (true) {
-            System.out.println("set client type: \n[1] Manager\n[2] Customer");
-            int clientType = userInput.nextInt();
-            userInput.nextLine();
+        Client client = new Client();
+        Scanner scanner = new Scanner(System.in);
+        boolean active = true;
         
-            System.out.println("Set client name:");
-            String clientName = userInput.nextLine();
-            
-            if (clientType == 1) {
-                client client = new Manager();
-                client.setClientType("Manager");
-                client.setClientName(clientName);
-            } else if (clientType == 2) {
-                Customer client = new Customer();
-                client.setClientType("Customer");
-                client.setClientName(clientName);
-            }
+        System.out.println("Hotel Reservation System");
+        
+        while (true) {
+            System.out.print("Enter client name: ");
+            client.setClientName(scanner.nextLine());
+            System.out.print("Enter client phone number: ");
+            client.setClientPhone(scanner.nextLine());
+            break;
         }
         
-        
-        int clientTask;
-        while (true) {
-            System.out.println("Choose operation:\n1 Read a reservation\n2 Create a reservation\n3 Exit");
-            clientTask = userInput.nextInt();
-            userInput.nextLine();
+        while (active) {
+            System.out.println("Welcome, " + client.getClientName() + ".\nContact: " + client.getClientPhone());
+            System.out.println("Reminder that you can only create, read, update, and delete your OWN reservations.");
             
-            switch (clientTask) {
-                case 1:
-                    System.out.println("Input the name of the reservation to read: ");
-                    String reservationToRead = userInput.nextLine();
-                    client.readReservation(reservationToRead);
-                    System.out.println(managerClient.readReservationResult());
-                            break;
-                        case 2:
-                            System.out.println("Enter new data");
-                            break;
-                        default:
-                            System.out.println("Would you like to exit? y/n");
-                            String exitChoice = userInput.nextLine();
-                            if (exitChoice.equals("y")) {
-                                System.exit(0);
-                            }
-                            break;
-                    }
-                }
-            } else if (clientType == 2) {
-                Customer customerClient = new Customer();
-                customerClient.setClientType("Customer");
-                System.out.println("Set client name:");
-                clientName = userInput.nextLine();
-                customerClient.setClientName(clientName);
-            }
+            System.out.println("1. Create Reservation");
+            System.out.println("2. Read Reservation");
+            System.out.println("3. Update Reservation");
+            System.out.println("4. Delete Reservation");
+            System.out.println("0. Exit Program");
+            System.out.print("Choose an option: ");
             
-            /*
-                
-                while (true) {
-                    System.out.println("Choose task:\n1:Create a reservation");
-                    int task = userInput.nextInt();
-                    long timestamp = System.currentTimeMillis();
+            int option = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (option) {
+                case 0:
+                    System.out.println("Exit confirmed");
+                    active = false;
                     break;
-                }
-                break;
+                case 1:
+                    client.createReservation(scanner, client);
+                    break;
+                case 2:
+                    client.readReservation(scanner, client);
+                    break;
+                case 3:
+                    client.updateReservation(scanner, client);
+                    break;
+                case 4:
+                    client.deleteReservation(scanner, client);
+                    break;
+                default:
+                    System.out.println("Invalid option");
             }
-            break;*/
         }
     }
-}
-*/
+    
+    //classes and methods (too lazy to put these in different files bruhhh)
+    public static class Client {
+        private String clientName;
+        private String clientPhone;
 
-package javaapplication45;
-
-import java.util.Scanner;
-
-public class Main {
-    public static void main(String[] args) {
-        Scanner userInput = new Scanner(System.in);
-        String clientName;
-        int clientTask = 0;
-        
-        while (true) {
-            System.out.println("set client type: \n1. Manager\n2. Customer");
-            int clientType = userInput.nextInt();
-            userInput.nextLine();
-            
-            if (clientType == 1) {
-                Manager managerClient = new Manager();
-                managerClient.setClientType("Manager");
-                System.out.println("Set client name:");
-                clientName = userInput.nextLine();
-                managerClient.setClientName(clientName);
-                
-                while (true) {
-                    System.out.println("Choose operation:\n1.Read a reservation\n2.Edit a reservation\n3.Exit");
-                    clientTask = userInput.nextInt();
-                    userInput.nextLine();
-                    System.out.println("Input the name of the reservation to read: ");
-                    String reservationToRead = userInput.nextLine();
-
-                    switch (clientTask) {
-                        case 1:
-                            managerClient.readReservation(reservationToRead);
-                            System.out.println(managerClient.readReservationResult());
-                            break;
-                        
-                        case 2:
-                            System.out.println("Enter new data");
-                            break;
-                        
-                        case 3:
-                            break;
-                    }
-                }
-                if (clientTask == 3) {
-                        break;
-                }
-            }
-            else if (clientType == 2) {
-                Customer customerClient = new Customer();
-                customerClient.setClientType("Customer");
-                System.out.println("Set client name:");
-                clientName = userInput.nextLine();
-                customerClient.setClientName(clientName);
-            }
-            
-            /*
-            
-            switch (clientType) {
-                case 1:
-                Manager managerClient = new Manager();
-                managerClient.setClientType("Manager");
-                System.out.println("Set client name:");
-                clientName = userInput.nextLine();
-                managerClient.setClientName(clientName);
-                    
-                while (true) {
-                    System.out.println("Choose operation:\n1.Read a reservation\n2.Edit a reservation\n3.Exit");
-                    int task = userInput.nextInt();
-                    userInput.nextLine();
-                    System.out.println("Input the name of the reservation to read: ");
-                    String reservationToRead = userInput.nextLine();
-
-                    switch (task) {
-                        case 1:
-                            managerClient.readReservation(reservationToRead);
-                            System.out.println(managerClient.readReservationResult());
-                            break;
-                        
-                        case 2:
-                            System.out.println("Enter new data");
-                            break;
-                        
-                        case 3:
-                            break;
-                    }
-                    
-                    if (task == 3) {
-                        break;
-                    }
-                    break;
-                }
-
-                    
-                case 2:
-                Customer customerClient = new Customer();
-                customerClient.setClientType("Customer");
-                System.out.println("Set client name:");
-                clientName = userInput.nextLine();
-                customerClient.setClientName(clientName);
-                
-                while (true) {
-                    System.out.println("Choose task:\n1:Create a reservation");
-                    int task = userInput.nextInt();
-                    long timestamp = System.currentTimeMillis();
-                    break;
-                }
-                break;
-            }
-            break;*/
+        public String getClientName() {
+            return clientName;
         }
+
+        public void setClientName(String clientName) {
+            this.clientName = clientName;
+        }
+        
+        public String getClientPhone() {
+            return clientPhone;
+        }
+
+        public void setClientPhone(String clientPhone) {
+            this.clientPhone = clientPhone;
+        }
+        
+        public void createReservation(Scanner scanner, Client client) {
+            System.out.print("Enter file name: " + client.getClientName() + "-" + client.getClientPhone() + "-");
+            String fileName = client.getClientName() + "-" + client.getClientPhone() + "-" + scanner.nextLine() + ".txt";
+            
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+                System.out.print("Enter text to write to file: ");
+                String text = scanner.nextLine();
+                writer.write(text);
+                System.out.println("File created successfully");
+            }
+            catch (IOException e) {
+                System.out.println("Error creating file: " + e.getMessage());
+            }
+        }
+
+        public void readReservation(Scanner scanner, Client client) {
+            System.out.print("Enter file name: " + client.getClientName() + "-" + client.getClientPhone() + "-");
+            String fileName = client.getClientName() + "-" + client.getClientPhone() + "-" + scanner.nextLine() + ".txt";
+        
+            try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+                String line;
+                
+                while ((line = reader.readLine()) != null) {
+                    System.out.println(line);
+                }
+            }
+            catch (IOException e) {
+                System.out.println("Error reading file: " + e.getMessage());
+            }
+        }
+
+        public void updateReservation(Scanner scanner, Client client) {
+            System.out.print("Enter file name: " + client.getClientName() + "-" + client.getClientPhone() + "-");
+            String fileName = client.getClientName() + "-" + client.getClientPhone() + "-" + scanner.nextLine() + ".txt";
+            System.out.print("Enter line number to update: ");
+            int lineNumber = scanner.nextInt();
+            scanner.nextLine();
+            System.out.print("Enter new text: ");
+            String newText = scanner.nextLine();
+            
+            try (BufferedReader reader = new BufferedReader(new FileReader(fileName));
+                BufferedWriter writer = new BufferedWriter(new FileWriter(fileName + ".tmp"))) {
+                String line;
+                int i = 1;
+                
+                while ((line = reader.readLine()) != null) {
+                    if (i == lineNumber) {
+                        writer.write(newText);
+                    }
+                    else {
+                        writer.write(line);
+                    }
+                    writer.newLine();
+                    i++;
+                }
+
+                java.io.File originalFile = new java.io.File(fileName);
+                java.io.File tempFile = new java.io.File(fileName + ".tmp");
+                originalFile.delete();
+                tempFile.renameTo(originalFile);
+                System.out.println("File updated successfully");
+            }
+            catch (IOException e) {
+                System.out.println("Error updating file: " + e.getMessage());
+            }
+        }
+
+        public void deleteReservation(Scanner scanner, Client client) {
+            System.out.print("Enter file name: " + client.getClientName() + "-" + client.getClientPhone() + "-");
+            String fileName = client.getClientName() + "-" + client.getClientPhone() + "-" + scanner.nextLine() + ".txt";
+            
+            try {
+                java.io.File file = new java.io.File(fileName);
+                
+                if (file.delete()) {
+                    System.out.println("File deleted successfully");
+                }
+                else {
+                    System.out.println("Error deleting file");
+                }
+            }
+            catch (Exception e) {
+                System.out.println("Error deleting file: " + e.getMessage());
+            }
+        }
+    }
+    
+    public static class MainUI {
+        private JFrame frame;
+        private JTextField clientNameField;
+        private JTextField clientPhoneField;
+        private JTextField fileNameField;
+        private JTextArea fileContentArea;
     }
 }
