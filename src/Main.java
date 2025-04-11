@@ -1,5 +1,3 @@
-package hotelreservationsystem;
-
 import java.util.Scanner;
 import java.io.*;
 import javax.swing.*;
