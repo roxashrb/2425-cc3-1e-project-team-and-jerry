@@ -1,44 +1,118 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication31;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+/**
+ *
+ * @author Tricia Bonilla
+ */
 
-public class ClientSelectionUI {
-    public void show() {
-        JFrame clientFrame = new JFrame("Select Client");
-        clientFrame.setSize(400, 300);
-        clientFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        clientFrame.setLayout(new GridLayout(6, 1));
 
-        JLabel label = new JLabel("Select Client Type", SwingConstants.CENTER);
-        JRadioButton managerButton = new JRadioButton("Manager");
-        JRadioButton customerButton = new JRadioButton("Customer");
-        ButtonGroup group = new ButtonGroup();
-        group.add(managerButton);
-        group.add(customerButton);
 
-        JTextField nameField = new JTextField();
-        JButton proceedButton = new JButton("Proceed");
+import java.util.Scanner;
+import java.io.*;
 
-        clientFrame.add(label);
-        clientFrame.add(managerButton);
-        clientFrame.add(customerButton);
-        clientFrame.add(proceedButton);
-         
-        proceedButton.addActionListener(e -> {
-            String type = managerButton.isSelected() ? "Manager" : customerButton.isSelected() ? "Customer" : "";
-            String name = nameField.getText().trim();
+public class Client {
+    private String clientName;
+    private String clientPhone;
 
-            if (type.isEmpty() || name.isEmpty()) {
-                JOptionPane.showMessageDialog(clientFrame, "Please fill in all fields.");
-            } else {
-                JOptionPane.showMessageDialog(clientFrame, "Welcome " + type + ": " + name);
-                clientFrame.dispose();
-                new ReservationUI().show();
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public String getClientPhone() {
+        return clientPhone;
+    }
+
+    public void setClientPhone(String clientPhone) {
+        this.clientPhone = clientPhone;
+    }
+
+    public void createReservation(Scanner scanner, Client client) {
+        String fileName = client.getClientName() + "-" + client.getClientPhone() + "-" + scanner.nextLine() + ".txt";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            String text = scanner.nextLine();
+            writer.write(text);
+        } catch (IOException e) {
+            System.out.println("Error creating file: " + e.getMessage());
+        }
+    }
+
+    public void readReservation(Scanner scanner, Client client) {
+        String fileName = client.getClientName() + "-" + client.getClientPhone() + "-" + scanner.nextLine() + ".txt";
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
             }
-        });
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+    }
 
-        clientFrame.setVisible(true);
+    public void updateReservation(Scanner scanner, Client client) {
+        String fileName = client.getClientName() + "-" + client.getClientPhone() + "-" + scanner.nextLine() + ".txt";
+        int lineNumber = scanner.nextInt();
+        scanner.nextLine();
+        String newText = scanner.nextLine();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName + ".tmp"))) {
+            String line;
+            int i = 1;
+
+            while ((line = reader.readLine()) != null) {
+                if (i == lineNumber) {
+                    writer.write(newText);
+                } else {
+                    writer.write(line);
+                }
+                writer.newLine();
+                i++;
+            }
+
+            new File(fileName).delete();
+            new File(fileName + ".tmp").renameTo(new File(fileName));
+        } catch (IOException e) {
+            System.out.println("Error updating file: " + e.getMessage());
+        }
+    }
+
+    public void deleteReservation(Scanner scanner, Client client) {
+        String fileName = client.getClientName() + "-" + client.getClientPhone() + "-" + scanner.nextLine() + ".txt";
+        File file = new File(fileName);
+        if (!file.delete()) {
+            System.out.println("Error deleting file");
+        }
+    }
+
+    public void saveAsCSV(String fileName, String content) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName + ".csv"))) {
+            writer.write("Client Name,Client Phone,Details\n");
+            writer.write("\"" + clientName + "\",\"" + clientPhone + "\",\"" + content.replace("\n", " ") + "\"");
+        } catch (IOException e) {
+            System.out.println("Error saving CSV: " + e.getMessage());
+        }
+    }
+
+    public void saveAsJSON(String fileName, String content) {
+        JSONObject obj = new JSONObject();
+        obj.put("clientName", clientName);
+        obj.put("clientPhone", clientPhone);
+        obj.put("details", content);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName + ".json"))) {
+            BufferedWriter write = writer.write(obj.toString(4));
+        } catch (IOException e) {
+            System.out.println("Error saving JSON: " + e.getMessage());
+        }
     }
 }
 
