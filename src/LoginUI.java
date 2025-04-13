@@ -1,110 +1,72 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication31;
+
+/**
+ *
+ * @author Tricia Bonilla
+ */
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
 
 public class LoginUI {
-    public static void main(String[] args) {
-       
-        JFrame loginFrame = new JFrame("Login Page");
-        loginFrame.setSize(400, 300);
-        loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-       
-        JPanel panel = new JPanel();
-        loginFrame.add(panel);
-        panel.setLayout(new GridLayout(3, 2));
+    private JFrame frame;
+    private JTextField usernameField;
+    private JPasswordField passwordField;
 
-        
-        JLabel usernameLabel = new JLabel("Username: ");
-        JTextField usernameField = new JTextField(20);
-        
-        
-        JLabel passwordLabel = new JLabel("Password: ");
-        JPasswordField passwordField = new JPasswordField(20);
-
-        
-        JButton loginButton = new JButton("Login");
-
-        
-        panel.add(usernameLabel);
-        panel.add(usernameField);
-        panel.add(passwordLabel);
-        panel.add(passwordField);
-        panel.add(loginButton);
-
-        
-        loginButton.addActionListener((ActionEvent e) -> {
-            String username = usernameField.getText();
-            String password = new String(passwordField.getPassword());
-            
-            
-            if ("admin".equals(username) && "password".equals(password)) {
-                JOptionPane.showMessageDialog(loginFrame, "Login successful!");
-                loginFrame.setVisible(false);  
-                
-                
-                showClientSelectionPage();
-            } else {
-                JOptionPane.showMessageDialog(loginFrame, "Invalid login, please try again.");
-            }
-        });
-
-        
-        loginFrame.setVisible(true);
+    public LoginUI() {
+        initializeUI();
     }
 
-    
-    public static void showClientSelectionPage() {
-        Scanner userInput = new Scanner(System.in);
-        boolean active = true;
-        String clientName;
-        
-        while (active) {
-            System.out.println("Set client type: \n1. Manager\n2. Customer");
-            int clientType = userInput.nextInt();
-            userInput.nextLine();
-            switch (clientType) {
-                case 1:
-                    Manager managerClient = new Manager();
-                    managerClient.setClientType("Manager");
-                    System.out.println("Set client name:");
-                    clientName = userInput.nextLine();
-                    managerClient.setClientName(clientName);
-                    break;
-                case 2:
-                    Customer customerClient = new Customer();
-                    customerClient.setClientType("Customer");
-                    System.out.println("Set client name:");
-                    clientName = userInput.nextLine();
-                    customerClient.setClientName(clientName);
-                    break;
-                default:
-                    System.out.println("Invalid choice");
-                    break;
-            }
+    private void initializeUI() {
+        frame = new JFrame("Hotel Reservation System - Login");
+        frame.setSize(400, 250);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new GridLayout(4, 1));
+        frame.getContentPane().setBackground(Color.YELLOW);
 
-            System.out.println("Choose operation:\n1. Create a reservation");
-            int operation = userInput.nextInt();
-            switch (operation) {
-                case 1:
-                    try {
-                        File reservation = new File("filename.txt");
-                        if (reservation.createNewFile()) {
-                            System.out.println("File created: " + reservation.getName());
-                        } else {
-                            System.out.println("File already exists.");
-                        }
-                    } catch (IOException e) {
-                        System.out.println("An error occurred.");
-                    }
-                    break;
-            }
+        JPanel userPanel = new JPanel(new FlowLayout());
+        userPanel.setBackground(Color.YELLOW);
+        userPanel.add(new JLabel("Username:"));
+        usernameField = new JTextField(20);
+        userPanel.add(usernameField);
+
+        JPanel passPanel = new JPanel(new FlowLayout());
+        passPanel.setBackground(Color.YELLOW);
+        passPanel.add(new JLabel("Password:"));
+        passwordField = new JPasswordField(20);
+        passPanel.add(passwordField);
+
+        JButton loginButton = new JButton("Login");
+        loginButton.setBackground(Color.MAGENTA);
+        loginButton.setForeground(Color.WHITE);
+        loginButton.addActionListener(e -> authenticate());
+
+        frame.add(userPanel);
+        frame.add(passPanel);
+        frame.add(new JPanel()); // Spacer
+        frame.add(loginButton);
+
+        frame.setVisible(true);
+    }
+
+    private void authenticate() {
+        String username = usernameField.getText();
+        String password = new String(passwordField.getPassword());
+
+        if (username.equals("admin") && password.equals("1234")) {
+            frame.dispose();
+            Client client = new Client();
+            MainUI mainUI = new MainUI(client);
+        } else {
+            JOptionPane.showMessageDialog(frame, "Invalid username or password.", "Login Failed", JOptionPane.ERROR_MESSAGE);
         }
     }
-    //
 
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(LoginUI::new);
+    }
 }
-
